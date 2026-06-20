@@ -1,5 +1,7 @@
 # RAG Document Assistant
 
+![CI](https://github.com/delcenjo/rag-document-assistant/actions/workflows/ci.yml/badge.svg)
+
 A retrieval-augmented generation (RAG) assistant that answers natural-language
 questions about a collection of documents and cites its sources. The included
 corpus is the documentation of a fictional product (*Nimbus Notes*), so the
