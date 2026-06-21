@@ -14,7 +14,7 @@ documents → chunking → embeddings → vector store
                                           │
                        question → embedding → similarity search → top-k chunks
                                                                       │
-                                                  prompt + context → Claude → answer
+                                                  prompt + context → LLM → answer
 ```
 
 1. **Ingestion** - Markdown documents are split into overlapping chunks and
@@ -24,11 +24,11 @@ documents → chunking → embeddings → vector store
    would be swapped for Chroma, Qdrant or pgvector behind the same interface.
 3. **Retrieval** - the question is embedded and the most similar chunks are
    returned with their similarity scores.
-4. **Generation** - the retrieved chunks are passed to Claude, which answers
+4. **Generation** - the retrieved chunks are passed to the LLM, which answers
    strictly from the context and cites the source filenames.
 
 Retrieval and evaluation run completely offline. Generation needs an
-`ANTHROPIC_API_KEY` (see `.env.example`).
+an LLM API key (see `.env.example`).
 
 ## Project structure
 
@@ -40,7 +40,7 @@ src/ragassistant/
   vector_store.py  cosine-similarity store with save/load
   ingest.py        build the index from the corpus
   retriever.py     embed a query and fetch top-k chunks
-  generator.py     build the prompt and call Claude
+  generator.py     build the prompt and call the LLM
   rag.py           retrieve + generate pipeline
   evaluate.py      retrieval recall@k on a labelled question set
   cli.py           ask questions from the command line
