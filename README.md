@@ -17,14 +17,14 @@ documents → chunking → embeddings → vector store
                                                   prompt + context → Claude → answer
 ```
 
-1. **Ingestion** — Markdown documents are split into overlapping chunks and
+1. **Ingestion** - Markdown documents are split into overlapping chunks and
    embedded with a `sentence-transformers` model.
-2. **Storage** — embeddings are kept in a small cosine-similarity vector store
+2. **Storage** - embeddings are kept in a small cosine-similarity vector store
    (NumPy) persisted to disk. It is intentionally transparent; in production it
    would be swapped for Chroma, Qdrant or pgvector behind the same interface.
-3. **Retrieval** — the question is embedded and the most similar chunks are
+3. **Retrieval** - the question is embedded and the most similar chunks are
    returned with their similarity scores.
-4. **Generation** — the retrieved chunks are passed to Claude, which answers
+4. **Generation** - the retrieved chunks are passed to Claude, which answers
    strictly from the context and cites the source filenames.
 
 Retrieval and evaluation run completely offline. Generation needs an
@@ -63,7 +63,7 @@ pytest
 ## Results
 
 The corpus indexes into 10 chunks across 5 documents. On a labelled set of 8
-questions, retrieval reaches **recall@4 = 0.88** (7/8) — the relevant document
+questions, retrieval reaches **recall@4 = 0.88** (7/8) - the relevant document
 appears in the top 4 results for all but one question.
 
 Example for *"How much does the Pro plan cost and what storage does it include?"*:
@@ -78,7 +78,7 @@ Example for *"How much does the Pro plan cost and what storage does it include?"
 The single miss ("Is Nimbus Notes SOC 2 compliant?") is a vocabulary-mismatch
 case where the relevant chunk ranks just outside the top 4. It is exactly the
 situation a cross-encoder re-ranking step or hybrid (dense + keyword) search is
-designed to fix — see *Possible improvements*.
+designed to fix - see *Possible improvements*.
 
 ## Possible improvements
 
