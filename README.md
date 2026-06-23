@@ -1,6 +1,9 @@
 # RAG Document Assistant
 
 ![CI](https://github.com/delcenjo/rag-document-assistant/actions/workflows/ci.yml/badge.svg)
+[![Live demo](https://img.shields.io/badge/Live_demo-Spaces-FFD21E?logo=huggingface&logoColor=000)](https://huggingface.co/spaces/delcenjo/rag-document-qa)
+
+Try it live: ask a question at the [interactive demo](https://huggingface.co/spaces/delcenjo/rag-document-qa).
 
 This is a small retrieval-augmented generation assistant. You point it at a folder
 of documents, ask a question in plain language, and it answers using only what it
